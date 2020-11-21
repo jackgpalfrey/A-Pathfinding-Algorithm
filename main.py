@@ -1,3 +1,4 @@
+# Imports
 import pygame
 import math
 from queue import PriorityQueue
@@ -16,7 +17,7 @@ SHOWSTEPS = True
 win = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("A* Pathfinding")
 
-
+# Creates Node Class - Used as points that the pathfinding algorithm navigates through
 class Node():
     def __init__(self,row,col,size,total_rows,showsteps):
         self.row = row
