@@ -16,6 +16,9 @@ SHOWSTEPS = True
 
 win = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("A* Pathfinding")
+programIcon = pygame.image.load('icon.png')
+pygame.display.set_icon(programIcon)
+
 
 # Creates Node Class - Used as points that the pathfinding algorithm navigates through
 class Node():
@@ -85,6 +88,7 @@ class Node():
     def draw(self,win):
         pygame.draw.rect(win, self.color, (self.x,self.y,self.size,self.size))
 
+
     def update_neighbors(self,grid):
         self.neighbors = []
         if self.row < self.totalRows - 1  and not grid[self.row + 1][self.col].is_wall(): # Checks Node Below
@@ -118,6 +122,8 @@ def h(p1,p2):
     return abs(x1 - x2) + abs(y1 - y2)
 
 def create_final_path(cameFrom, current, draw, showSteps):
+    """ Creates final shortest route from start to end
+    """
     while current in cameFrom:
         current = cameFrom[current]
         current.settype_path()
@@ -174,6 +180,7 @@ def compute(draw,grid,start,end,showsteps):
         if current != start:
             current.settype_closed()
 
+    print("No Solution")
     return False
 
 
